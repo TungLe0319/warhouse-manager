@@ -47,9 +47,104 @@ const packages = [{
   trackingNumber: 'suz2367'
 }
 ]
-draW()
 
-function draW(){
-  let heavy= packages.find(element => element > 'Zach')
-  console.log(heavy);
+  
+// NOTE how to get a random element
+const random = packages[Math.floor(Math.random() * packages.length)];
+
+
+const heavyFiltered= packages.filter((packages) => {
+  return packages.heavy
+  
+})
+
+const priorityFiltered= packages.filter((packages) => {
+  return packages.priority
+ 
+})
+
+const fragileFiltered= packages.filter((packages) => {
+  return packages.fragile
+ 
+})
+
+// console.log(heavyFiltered,priorityFiltered,fragileFiltered);
+
+
+draw(packages)
+function draw(data){
+  
+
+  for (let i = 0; i < data.length; i++) {
+    let row = `<table class="table table-bordered  table-success table-striped  ">
+   
+      <tr>
+        <th>To:</th>
+        <th >Tracking:</th>
+        <th >Heavy</th>
+        <th>Priority</th>
+        <th >Fragile</th>
+      </tr>
+  
+
+    <tbody class="table-group-divider">
+
+    <tr>
+    
+    <td>${data[i].to}</td>
+    <td>${data[i].trackingNumber}</td>
+    <td>${data[i].heavy}</td>
+    <td>${data[i].priority}</td>
+    <td>${data[i].fragile}</td>
+    </tr>
+
+
+    </tbody>
+  </table>`
+    table.innerHTML += row
+  }
 }
+
+function filterByHeavy(){
+  
+  heavyFiltered.forEach((package) =>{
+   
+    let heavyRow =`<table class="table table-bordered  table-danger table-striped  ">
+   
+    <tr>
+      <th>To:</th>
+      <th >Tracking:</th>
+      <th><span class="text-danger">Heavy</span></th>
+      <th>Priority</th>
+      <th >Fragile</th>
+    </tr>
+
+
+  <tbody class="table-group-divider">
+
+  <tr>
+  
+  <td>${package.to}</td>
+  <td>${package.trackingNumber}</td>
+  <td>${package.heavy}</td>
+  <td>${package.priority}</td>
+  <td>${package.fragile}</td>
+  </tr>
+
+
+  </tbody>
+</table>`
+table.innerHTML += heavyRow
+  })
+}
+
+
+
+
+
+
+
+
+
+
+
