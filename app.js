@@ -50,9 +50,6 @@ const packages = [{
 draW()
 
 function draW(){
-  
-  for (let i = 0; i < packages.length; i++) {
-    const package = packages[i];
-    console.log(i);
-  }
+  let heavy= packages.find(element => element > 'Zach')
+  console.log(heavy);
 }
