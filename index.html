@@ -1,0 +1,127 @@
+<!-- Updated HTML WITH BOOTSTRAP/MDI/FONT-AWESOME/GOOGLE-FONTS/DEBUG/SCRIPTS -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>Document</title>
+    <!-- NOTE Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <!-- NOTE MDI ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.0.96/css/materialdesignicons.min.css"
+      integrity="sha512-fXnjLwoVZ01NUqS/7G5kAnhXNXat6v7e3M9PhoMHOTARUMCaf5qNO84r5x9AFf5HDzm3rEZD8sb/n6dZ19SzFA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- NOTE GoogleFonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@1,500&family=Orbitron:wght@500&family=Poppins:wght@200&family=Roboto:ital,wght@1,300&family=Titan+One&display=swap"
+      rel="stylesheet"
+    />
+    <!-- NOTE style.css -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <!-- SECTION STYLES -->
+  <style>
+    body.debug .container,
+    body.debug .container-fluid {
+      outline: 2px double blue;
+      outline-offset: -2px;
+    }
+
+    body.debug .row {
+      outline: 2px dashed red;
+      outline-offset: -2px;
+    }
+
+    body.debug [class*='col-'] {
+      outline: 2px dotted forestgreen;
+      outline-offset: -3px;
+    }
+  </style>
+  <!-- !SECTION -->
+
+  <body class="debug">
+    <header class="container-fluid bg-dark text-light">
+      <div class="row p-4">
+        <div class="col-md-12 d-flex justify-content-center">
+          <h1>WareHouse-Manager</h1>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ANCHOR FILTER BY -->
+      <section class="container bg-light text-dark pt-5 pb-3 mt-5">
+        <div class="row fs-1">
+          <div
+            class="col-md-3 bg-dark text-light rounded d-flex justify-content-center align-items-center"
+          >
+            <p>Filter By:</p>
+          </div>
+
+          <div id="heavy " class="col-md-3 d-flex justify-content-center">
+            <button class="btn btn-danger btn-lg px-5">Heavy</button>
+          </div>
+          <div id="priority" class="col-md-3 d-flex justify-content-center">
+            <button class="btn btn-warning btn-lg px-5">Priority</button>
+          </div>
+          <div id="fragile" class="col-md-3 d-flex justify-content-center">
+            <button class="btn btn-info btn-lg px-5">Fragile</button>
+          </div>
+        </div>
+        <div class="row">
+          <div
+            id="customer"
+            class="col-md-6 d-flex justify-content-center fs-1"
+          ></div>
+        </div>
+      </section>
+
+      <!-- ANCHOR  -->
+      <section class="container bg-light text-dark">
+        <div class="row justify-content-center">
+          <div
+            class="col-md-9 d-flex justify-content-center bg-dark text-light"
+          >
+            <h1>Packages</h1>
+          </div>
+        </div>
+        <!-- ANCHOR HERE THEY ARE BEING DRAW() -->
+        <div class="row">
+          <div
+        
+            class="col-md-6 d-flex justify-content-center fs-1"
+          ><p   id="customerName"></p></div>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+
+    <!-- SECTION SCRIPTS -->
+    <script
+      src="https://kit.fontawesome.com/a2d3ad0e84.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <script src="app.js"></script>
+    <!-- !SECTION -->
+  </body>
+</html>
