@@ -64,8 +64,9 @@ let fragile = packages.filter((package) => package.fragile);
 // console.log(heavyFiltered,priorityFiltered,fragileFiltered);
 
 draw(packages);
+
 function draw(data) {
-  table.innerHTML = ""
+  table.innerHTML = '';
   for (let i = 0; i < data.length; i++) {
     let row = `<table class="table table-bordered  table-success table-striped  ">
    
@@ -96,9 +97,12 @@ function draw(data) {
 }
 
 function filterByHeavy() {
+  /** REVIEW here im grabbing the table_div in html and setting it to an empty string to "reset"
+   the div.**/
   let heavyTable = document.getElementById('table');
-heavyTable.innerHTML = ""
+  heavyTable.innerHTML = '';
 
+  // REVIEW taking my let filter i made and doing a function for reach (drawing them)
   heavy.forEach((package) => {
     let heavyRow = `
     
@@ -133,7 +137,7 @@ heavyTable.innerHTML = ""
 
 function filterByPriority() {
   let PriorityTable = document.getElementById('table');
-PriorityTable.innerHTML=""
+  PriorityTable.innerHTML = '';
 
   priority.forEach((package) => {
     let PriorityRow = `<table class="table table-bordered  table-warning table-striped  ">
@@ -166,7 +170,7 @@ PriorityTable.innerHTML=""
 }
 function filterByFragile() {
   let FragileTable = document.getElementById('table');
-FragileTable.innerHTML=""
+  FragileTable.innerHTML = '';
   fragile.forEach((package) => {
     let fragileRow = `<table class="table table-bordered  table-primary table-striped  ">
    
