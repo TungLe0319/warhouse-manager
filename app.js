@@ -30,7 +30,7 @@ const packages = [
   {
     heavy: true,
     priority: true,
-    fragile: true,
+    fragile: false,
     to: 'Brittany',
   },
   {
@@ -48,155 +48,59 @@ const packages = [
     trackingNumber: 'suz2367',
   },
 ];
+let tableElement = document.getElementById('table');
 
-// NOTE how to get a random element
-const random = packages[Math.floor(Math.random() * packages.length)];
-
-// const heavyFiltered = packages.filter((packages) => {
-//   return packages.heavy;
-// });
-let heavy = packages.filter((package) => package.heavy);
-console.log(heavy);
-let priority = packages.filter((package) => package.priority);
-
-let fragile = packages.filter((package) => package.fragile);
-
-// console.log(heavyFiltered,priorityFiltered,fragileFiltered);
-
-draw(packages);
-
-function draw(data) {
-  table.innerHTML = '';
-  for (let i = 0; i < data.length; i++) {
-    let row = `<table class="table table-bordered  table-success table-striped  ">
-   
+function drawPackages(packages) {
+  let template = '';
+  packages.forEach((package) => {
+    template += `
+    
+    <table class="table table-bordered table-striped table-primary">
+    <thead>
       <tr>
-        <th>To:</th>
-        <th >Tracking:</th>
-        <th >Heavy</th>
-        <th>Priority</th>
-        <th >Fragile</th>
+        <th scope="col">To:</th>
+        <th scope="col">Tracking#:</th>
+        <th scope="col">Heavy</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Fragile</th>
       </tr>
-  
-    <tbody class="table-group-divider">
-
-    <tr>
-    <td>${data[i].to}</td>
-    <td>${data[i].trackingNumber}</td>
-    <td>${data[i].heavy}</td>
-    <td>${data[i].priority}</td>
-    <td>${data[i].fragile}</td>
-    </tr>
+    </thead>
+    <tbody>
+     
+      <tr>
+        <td>${package.to}</td>
+        <td>${package.trackingNumber}</td>
+        <td>${package.heavy}</td>
+        <td>${package.priority}</td>
+        <td>${package.fragile}</td>
+      </tr>
 
 
     </tbody>
-  </table>`;
+  </table>
 
-    table.innerHTML += row;
-  }
-}
-
-function filterByHeavy() {
-  /** REVIEW here im grabbing the table_div in html and setting it to an empty string to "reset"
-   the div.**/
-  let heavyTable = document.getElementById('table');
-  heavyTable.innerHTML = '';
-
-  // REVIEW taking my let filter i made and doing a function for reach (drawing them)
-  heavy.forEach((package) => {
-    let heavyRow = `
-    
-    <table class="table table-bordered  table-danger table-striped  ">
-   
-    <tr>
-      <th>To:</th>
-      <th >Tracking:</th>
-      <th>Heavy</th>
-      <th>Priority</th>
-      <th >Fragile</th>
-    </tr>
-
-
-  <tbody class="table-group-divider">
-
-  <tr>
-  
-  <td>${package.to}</td>
-  <td>${package.trackingNumber}</td>
-  <td><span class="text-success">${package.heavy}</span</td>
-  <td>${package.priority}</td>
-  <td>${package.fragile}</td>
-  </tr>
-
-
-  </tbody>
-</table>`;
-    heavyTable.innerHTML += heavyRow;
+    `;
   });
+  // .innerHTML CONVERTS TEMPLATE STRING FROM JAVASCRIPT TO HTML PAGE
+  tableElement.innerHTML = template
 }
 
-function filterByPriority() {
-  let PriorityTable = document.getElementById('table');
-  PriorityTable.innerHTML = '';
+drawPackages(packages)
 
-  priority.forEach((package) => {
-    let PriorityRow = `<table class="table table-bordered  table-warning table-striped  ">
-   
-    <tr>
-      <th>To:</th>
-      <th >Tracking:</th>
-      <th>Heavy</th>
-      <th><span class="text-success">Priority</span></th>
-      <th >Fragile</th>
-    </tr>
+function filterByHeavy(){
+// NOTE HERE JAVASCRIPT ALREADY KNOWS YOU'RE ASKING A TRUE OR FALSE
+  let heavyPackages = packages.filter(package=> package.heavy)
 
+  drawPackages(heavyPackages)
 
-  <tbody class="table-group-divider">
+};
 
-  <tr>
-  
-  <td>${package.to}</td>
-  <td>${package.trackingNumber}</td>
-  <td>${package.heavy}</td>
-  <td><span class="text-success">${package.priority}</span></td>
-  <td>${package.fragile}</td>
-  </tr>
+function filterByFragile(){
+  let fragilePackages = packages.filter(package => package.fragile)
+  drawPackages(fragilePackages)
+};
 
-
-  </tbody>
-</table>`;
-    PriorityTable.innerHTML += PriorityRow;
-  });
-}
-function filterByFragile() {
-  let FragileTable = document.getElementById('table');
-  FragileTable.innerHTML = '';
-  fragile.forEach((package) => {
-    let fragileRow = `<table class="table table-bordered  table-primary table-striped  ">
-   
-    <tr>
-      <th>To:</th>
-      <th >Tracking:</th>
-      <th>Heavy</th>
-      <th>Priority</th>
-      <th >Fragile</th>
-    </tr>
-
-
-  <tbody class="table-group-divider">
-
-  <tr>
-  
-  <td>${package.to}</td>
-  <td>${package.trackingNumber}</td>
-  <td>${package.heavy}</td>
-  <td>${package.priority}</td>
-  <td><span class="text-success">${package.fragile}</span></td>
-  </tr>
-
-
-  </tbody>
-</table>`;
-    FragileTable.innerHTML += fragileRow;
-  });
-}
+function filterByPriority(){
+  let priorityPackages= packages.filter(package => package.priority)
+  drawPackages(priorityPackages)
+};
